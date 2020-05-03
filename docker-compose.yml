@@ -1,10 +1,10 @@
-version:  '3'
+version:  '3.1'
         
 services:
     dbos:
       image: mysql:5.7
       volumes:
-        - mysql_storage_new:/var/lib/mysql
+        - mysql1_storage_new:/var/lib/mysql
       restart: always
       environment:
         MYSQL_ROOT_PASSWORD: rootpass
@@ -15,21 +15,23 @@ services:
 
 
     wordpressos:
-      image: wordpress:5.1.1-php7.3-apache
+      image: joomla
       restart: always
       depends_on:
         - dbos
+      links:
+        - dbos:mysql
       ports:
-        - 8081:80
+        - 8080:80
       environment:
-        WORDPRESS_DB_HOST: dbos
-        WORDPRESS_DB_USER: vimal
-        WORDPRESS_DB_PASSWORD: redhat
-        WORDPRESS_DB_NAME: mydb
+        JOOMLA_DB_HOST: dbos
+        JOOMLA_DB_USER: vimal
+        JOOMLA_DB_PASSWORD: redhat
+        JOOMLA_DB_NAME: mydb
       volumes:
-        - wp_storage_new:/var/www/html
+        - db_storage_new:/var/www/html
   
 volumes:
-    wp_storage_new:
-    mysql_storage_new:
+    db_storage_new:
+    mysql1_storage_new:
 
