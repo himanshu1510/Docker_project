@@ -8,13 +8,13 @@ services:
       restart: always
       environment:
         MYSQL_ROOT_PASSWORD: rootpass
-        MYSQL_USER: vimal
+        MYSQL_USER: himanshu
         MYSQL_PASSWORD: redhat
         MYSQL_DATABASE: mydb
 
 
 
-    wordpressos:
+    joomla_os:
       image: joomla
       restart: always
       depends_on:
@@ -25,7 +25,7 @@ services:
         - 8080:80
       environment:
         JOOMLA_DB_HOST: dbos
-        JOOMLA_DB_USER: vimal
+        JOOMLA_DB_USER: himanshu
         JOOMLA_DB_PASSWORD: redhat
         JOOMLA_DB_NAME: mydb
       volumes:
