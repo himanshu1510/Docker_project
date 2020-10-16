@@ -1,4 +1,4 @@
-# Docker Project
+# docker Project
 himanshu
 <br>This project is consist of two environments in docker.</br>
 # 1. MySql
